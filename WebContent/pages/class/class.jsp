@@ -102,7 +102,7 @@
 	                  <th>
 	                  	<a href="<%=request.getContextPath()%>/class/dispatchupdate?classNum=${classTable.classNum}">修改</a>
 	                  	<a href="<%=request.getContextPath()%>/class/deleteclass?classNum=${classTable.classNum}">删除</a>
-	                  </th>
+	                  </th> 
                 </tr>
 				</c:forEach>
 				</tbody>
