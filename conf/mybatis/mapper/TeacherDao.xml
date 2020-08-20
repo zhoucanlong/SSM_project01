@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespce:名称空间，写接口的全类名，相当于告诉Mybatis这个配置文件是来实现哪个接口的  -->
+<mapper namespace="com.zhou.dao.TeacherDao">
+	
+<!-- 		//获取部分教师信息
+	public List<Teacher> getTeacherByNumOrPro(Teacher teacher); -->
+	<select id="getTeacherByNumOrPro" resultType="com.zhou.bean.Teacher">
+		select * from teacher
+		<where>
+			<choose>
+				<when test="teacherNum!=null">
+					teacher_num=#{teacherNum}
+				</when>
+				<when test="teacherPro!=null">
+					teacher_pro=#{teacherPro}
+				</when>			
+				<when test="teacherName!=null">
+					teacher_name=#{teacherName}
+				</when>
+				<otherwise>
+					1=1
+				</otherwise>
+			</choose>
+		</where>
+	</select>
+	
+	
+<!-- 	//获取所有教师信息
+	public List<Teacher> getAllTeacher(); -->
+	<select id="getAllTeacher" resultType="com.zhou.bean.Teacher">
+		select * from teacher
+	</select>
+	
+<!-- 	//增加教师信息
+	public int addTeacher(Teacher teacher); -->
+	<insert id="addTeacher">
+		insert into teacher(teacher_num,teacher_name,teacher_pro,teacher_salary,teacher_year,teacher_birth)
+		value(#{teacherNum},#{teacherName},#{teacherPro},#{teacherSalary},#{teacherYear},#{teacherBirth})
+	</insert>
+	
+<!-- 	//删除教师信息
+	public int deleteTeacher(Teacher teacher); -->
+	<delete id="deleteTeacher">
+		delete from teacher where teacher_num=#{teacherNum}
+	</delete>
+	
+<!-- 	//修改教师信息
+	public int updateTeacher(Teacher teacher); -->
+	<update id="updateTeacher">
+		update teacher
+		set teacher_num=#{teacherNum},teacher_name=#{teacherName},teacher_pro=#{teacherPro},teacher_salary=#{teacherSalary},teacher_year=#{teacherYear},teacher_birth=#{teacherBirth}
+		where teacher_num=#{teacherNum}
+	</update>
+	
+</mapper>

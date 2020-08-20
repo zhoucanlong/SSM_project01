@@ -75,8 +75,11 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<%=request.getContextPath()%>/pages/teacher/teacher.jsp"><i class="fa fa-circle-o"></i>课程信息查询/删除</a></li>
-            <li><a href="<%=request.getContextPath()%>/pages/teacher/addAndUpdate.jsp"><i class="fa fa-circle-o"></i>课程信息添加/修改</a></li>                 </ul>
+            <li><a href="<%=request.getContextPath()%>/pages/teacher/teacher.jsp"><i class="fa fa-circle-o"></i>教师信息查询/删除</a></li>
+            <li><a href="<%=request.getContextPath()%>/pages/teacher/add.jsp"><i class="fa fa-circle-o"></i>教师信息添加</a></li>  
+      	    <li><a href="<%=request.getContextPath()%>/pages/teacher/update.jsp"><i class="fa fa-circle-o"></i>教师信息修改</a></li>
+      	  </ul>
+      	
         </li>
         
         <!--课程-教师-班级信息管理（必修）  -->

@@ -25,7 +25,8 @@
   </environments>
   <mappers>
     <mapper resource="mybatis/mapper/StudentDao.xml"/>
-     <mapper resource="mybatis/mapper/ClassDao.xml"/>
-      <mapper resource="mybatis/mapper/CourseDao.xml"/>
+    <mapper resource="mybatis/mapper/ClassDao.xml"/>
+    <mapper resource="mybatis/mapper/CourseDao.xml"/>
+    <mapper resource="mybatis/mapper/TeacherDao.xml"/>
   </mappers>
 </configuration>

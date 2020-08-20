@@ -34,22 +34,22 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-           	  <form action="<%=request.getContextPath()%>/PersonAddServlet" method="post">
+           	  <form action="<%=request.getContextPath()%>/teacher/updateteacher" method="post">
            	        <table id="example2" class="table table-bordered table-hover">
            	        <tr>
-	                  <th><input type="text" class="form-control" name="stunum" placeholder="教师号:"></th>
-	                  <th><input type="text" class="form-control" name="stuname" placeholder="教师姓名:"></th>
+	                  <th><input type="text" class="form-control" name="teacherNum" placeholder="教师号:" value="${teacher.teacherNum}"></th>
+	                  <th><input type="text" class="form-control" name="teacherName" placeholder="教师姓名:" value="${teacher.teacherName}"></th>
 	                </tr>
 	                <tr>
-	                  <th><input type="text" class="form-control" name="stubirth" placeholder="教师职称:"></th>
-	                  <th><input type="text" class="form-control" name="stusex" placeholder="教师工资:"></th>
+	                  <th><input type="text" class="form-control" name="teacherPro" placeholder="教师职称:" value="${teacher.teacherPro}"></th>
+	                  <th><input type="text" class="form-control" name="teacherSalary" placeholder="教师工资:" value="${teacher.teacherSalary}"></th>
 	                </tr>
 	                <tr>
-	                  <th><input type="text" class="form-control" name="stuclass" placeholder="教师任教年限:"></th>
-  	                  <th><input type="text" class="form-control" name="stuclass" placeholder="教师任教年限:"></th>
+	                  <th><input type="text" class="form-control" name="teacherYear" placeholder="教师任教年限:" value="${teacher.teacherYear}"></th>
+  	                  <th><input type="text" class="form-control" name="teacherBirth" placeholder="教师生日:（格式：1982-03-03）" value="${teacher.teacherBirth}"></th>
                     </tr>
                     <tr>
-                  	   <th><input type="submit" class="btn btn-block btn-info" value="添加/修改"></th>
+                  	   <th><input type="submit" class="btn btn-block btn-info" value="修改"></th>
                     </tr>
            	        </table>
            	  </form>
