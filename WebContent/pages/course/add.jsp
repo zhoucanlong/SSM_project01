@@ -34,18 +34,18 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-           	  <form action="<%=request.getContextPath()%>/PersonAddServlet" method="post">
+           	  <form action="<%=request.getContextPath()%>/course/addcourse" method="post">
            	        <table id="example2" class="table table-bordered table-hover">
            	        <tr>
-	                  <th><input type="text" class="form-control" name="stunum" placeholder="课程号:"></th>
-	                  <th><input type="text" class="form-control" name="stuname" placeholder="课程名:"></th>
+	                  <th><input type="text" class="form-control" name="courseNum" placeholder="课程号:"></th>
+	                  <th><input type="text" class="form-control" name="courseName" placeholder="课程名:"></th>
 	                </tr>
 	                <tr>
-	                  <th><input type="text" class="form-control" name="stubirth" placeholder="课程学分:"></th>
-	                  <th><input type="text" class="form-control" name="stusex" placeholder="课程学时:"></th>
+	                  <th><input type="text" class="form-control" name="courseCredit" placeholder="课程学分:"></th>
+	                  <th><input type="text" class="form-control" name="courseTime" placeholder="课程学时:"></th>
 	                </tr>
 	                <tr>
-                      <th><input type="submit" class="btn btn-block btn-info" value="添加/修改"></th>
+                      <th><input type="submit" class="btn btn-block btn-info" value="添加"></th>
                     </tr>
            	        </table>
            	  </form>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="com.zhou.bean.Student" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -37,10 +39,10 @@
             	
               <!-- 课程号搜索 -->
             	<tr>
-			      <form action="#" method="get" class="sidebar-form">
+			      <form action="<%=request.getContextPath()%>/course/getcoursebynum" method="get" class="sidebar-form">
 			        <div class="input-group">
 			         <td>
-			         	<input type="text" name="q" class="form-control" placeholder="课程号搜索...">
+			         	<input type="text" name="courseNum" class="form-control" placeholder="课程号搜索...">
 			         </td>
 			         
 			         <td>
@@ -52,7 +54,13 @@
 			        </div>
 			      </form>
             	</tr>
-               
+               	<tr>
+               	<form action="<%=request.getContextPath()%>/course/getallcourse" method="post" class="sidebar-form">
+            		<td>
+            			<input type="submit" class="btn btn-block btn-info" value="显示全部课程信息">
+            		</td>
+            	</form>
+            	</tr>
             </table>
  
             
@@ -69,16 +77,20 @@
                 </tr>
                 </thead>
 				<tbody>
+				<c:forEach items="${courses}" var="course">
 				<tr>
-                  <th>00001</th>
-                  <th>数据库系统原理</th>
-                  <th>4</th>
-                  <th>48</th>
+                  <th>${course.courseNum}</th>
+                  <th>${course.courseName}</th>
+                  <th>${course.courseCredit}</th>
+                  <th>${course.courseTime}</th>
                   <th>
-                  	<a href="">修改</a>
-                  	<a href="">删除</a>
+                  	<a href="<%=request.getContextPath()%>/course/dispatchcourse?courseNum=${course.courseNum}">修改</a>
+                  	<a href="<%=request.getContextPath()%>/course/deletecourse?courseNum=${course.courseNum}">删除</a>
                   </th>>
                 </tr>
+				
+				</c:forEach>
+
 				</tbody>
               </table>
             </div>

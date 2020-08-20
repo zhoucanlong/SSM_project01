@@ -60,7 +60,9 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<%=request.getContextPath()%>/pages/course/course.jsp"><i class="fa fa-circle-o"></i>课程信息查询/删除</a></li>
-            <li><a href="<%=request.getContextPath()%>/pages/course/addAndUpdate.jsp"><i class="fa fa-circle-o"></i>课程信息添加/修改</a></li>          
+            <li><a href="<%=request.getContextPath()%>/pages/course/add.jsp"><i class="fa fa-circle-o"></i>课程信息添加</a></li>          
+            <li><a href="<%=request.getContextPath()%>/pages/course/update.jsp"><i class="fa fa-circle-o"></i>课程信息修改</a></li>          
+         	
           </ul>
         </li>
         

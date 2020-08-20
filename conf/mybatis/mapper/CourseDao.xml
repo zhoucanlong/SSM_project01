@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.zhou.dao.CourseDao">
+  
+<!--   	//获取某个课程的信息
+	public Course getCourseByNum(Course course); -->
+	<select id="getCourseByNum" resultType="com.zhou.bean.Course">
+		select * from course where course_num=#{courseNum}
+	</select>
+	
+<!-- 	//获取所有课程信息
+	public List<Course> getAllCourse(); -->
+	<select id="getAllCourse" resultType="com.zhou.bean.Course">
+		select * from course
+	</select>
+	
+<!-- 	//增加单个课程信息
+	public int addCourse(Course course); -->
+	<insert id="addCourse">
+		insert into course(course_num,course_name,course_credit,course_time)
+		values(#{courseNum},#{courseName},#{courseCredit},#{courseTime})
+	</insert>
+	
+<!-- 	//删除单个课程信息
+	public int deleteCourse(Course course); -->
+	<delete id="deleteCourse">
+		delete from course where course_num=#{courseNum}
+	</delete>
+	
+<!-- 	//修改单个课程信息
+	public int updateCourse(Course course); -->
+  	<update id="updateCourse">
+  		update course 
+  		set course_num=#{courseNum},course_name=#{courseName},course_credit=#{courseCredit},course_time=#{courseTime}
+  		where course_num=#{courseNum}
+  	</update>
+  
+  </mapper>
