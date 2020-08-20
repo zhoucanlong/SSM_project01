@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.zhou.dao.ClassDao">
+  	
+<!--   		//查询条件班级的信息
+	public ClassTable getClassByClassNumOrYear(ClassTable classTable); -->
+	
+	<select id="getClassByClassNumOrYear" resultType="com.zhou.bean.ClassTable">
+		select * from class 
+		<where>
+			<choose>
+				<when test="classNum!=null">
+					class_num=#{classNum}
+				</when>
+				<when test="classYear!=null">
+					class_year=#{classYear}
+				</when>
+				<otherwise>
+					1=1
+				</otherwise>
+			</choose>
+		</where>
+	</select>
+	
+<!-- 	//查询所有班级信息
+	public List<ClassTable> getAllClass(); -->
+	
+	<select id="getAllClass" resultType="com.zhou.bean.ClassTable">
+		select * from class
+	</select>
+	
+	
+<!-- 	//添加班级信息
+	public int addClass(ClassTable classTable); -->
+	
+	<insert id="addClass">
+		insert into class(class_num,class_name,class_year,class_count)
+		values(#{classNum},#{className},#{classYear},#{classCount}) 
+	</insert>
+	
+<!-- 	//删除班级信息
+	public int deleteClass(ClassTable classTable); -->
+	
+	<delete id="deleteClass">
+		delete from class
+		where class_num=#{classNum}
+	</delete>
+	
+<!-- 	//修改班级信息
+	public int updateClass(ClassTable classTable); -->
+  	<update id="updateClass">
+		update class
+		set class_num=#{classNum},class_name=#{className},class_year=#{classYear},class_count=#{classCount}
+		where class_num=#{classNum}
+	</update>
+  
+  </mapper>
+  

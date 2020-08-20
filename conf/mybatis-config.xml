@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	 
+<!--2.这是 MyBatis 中极为重要的调整设置，它们会改变 MyBatis 的运行时行为。 下表描述了设置中各项设置的含义、默认值等。  -->
+ <settings>
+ 	<!--name,配置项的key,value,配置项的值  -->
+ 	<!--开启驼峰命名  -->
+ 	<setting name="mapUnderscoreToCamelCase" value="true"/>
+ </settings>
+
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+    	<!--配置连接池  -->
+      <dataSource type="POOLED">
+        <property name="driver" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/scoremanage"/>
+        <property name="username" value="root"/>
+        <property name="password" value=""/>
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+    <mapper resource="mybatis/mapper/StudentDao.xml"/>
+     <mapper resource="mybatis/mapper/ClassDao.xml"/>
+  </mappers>
+</configuration>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespce:名称空间，写接口的全类名，相当于告诉Mybatis这个配置文件是来实现哪个接口的  -->
+<mapper namespace="com.zhou.dao.StudentDao">
+<!--按照学号获取学生信息	
+	public Student getStudentByStuNum(Student student);  -->
+ <select id="getStudentByStuNum" resultType="com.zhou.bean.Student">
+    <!--sql语句不要写分号  -->
+    SELECT * FROM student
+    <where>
+    	<choose>
+    		<when test="stuNum!=null">
+    			stu_num=#{stuNum}
+    		</when>
+   
+    		<when test="classNum!=null">
+    			class_num=#{classNum}
+    		</when>
+    		
+    		<when test="stuName!=null">
+    			stu_name=#{stuName}
+    		</when>
+    		<otherwise>
+    			1=1
+    		</otherwise>
+    	</choose>
+    </where>
+ </select>
+ 
+  <!--获取所有学生的信息
+	public List<Student> getAllStudent();  -->
+ <select id="getAllStudent" resultType="com.zhou.bean.Student">
+    <!--sql语句不要写分号  -->
+    SELECT * FROM student
+ </select>
+ 
+<!--  	//插入学生信息
+	public int addStudent(Student student); -->
+	<insert id="addStudent">
+		INSERT INTO student(stu_num,stu_name,birth,class_num,sex) 
+		VALUES(#{stuNum},#{stuName},#{birth},#{classNum},#{sex})
+	</insert>
+	
+	<!-- 	//修改学生信息
+	public int updateStudent(Student student); -->
+	<update id="updateStudent">
+		UPDATE student 
+		SET stu_num=#{stuNum},stu_name=#{stuName},birth=#{birth},class_num=#{classNum},sex=#{sex}
+		WHERE stu_num=#{stuNum}
+	</update>
+	
+	<!--	//删除学生信息
+	public int deleteStudent(String stuNum);  -->
+	<delete id="deleteStudent">
+	DELETE  FROM student WHERE stu_num=#{stuNum}
+	</delete>
+</mapper>
