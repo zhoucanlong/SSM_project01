@@ -34,18 +34,18 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-           	  <form action="<%=request.getContextPath()%>/PersonAddServlet" method="post">
+           	  <form action="<%=request.getContextPath()%>/ctcbi/addctcbi" method="post">
            	        <table id="example2" class="table table-bordered table-hover">
            	        <tr>
-	                  <th><input type="text" class="form-control" name="stunum" placeholder="ctcid:"></th>
-	                  <th><input type="text" class="form-control" name="stuname" placeholder="课程号:"></th>
+	                  <th><input type="text" class="form-control" name="ctcid" placeholder="ctcid:"></th>
+	                  <th><input type="text" class="form-control" name="courseNum" placeholder="课程号:"></th>
 	                </tr>
 	                <tr>
-	                  <th><input type="text" class="form-control" name="stubirth" placeholder="教师号:"></th>
-	                  <th><input type="text" class="form-control" name="stusex" placeholder="班级号:"></th>
+	                  <th><input type="text" class="form-control" name="teacherNum" placeholder="教师号:"></th>
+	                  <th><input type="text" class="form-control" name="classNum" placeholder="班级号:"></th>
 	                </tr>
 	                <tr>
-                      <th><input type="submit" class="btn btn-block btn-info" value="添加/修改"></th>
+                      <th><input type="submit" class="btn btn-block btn-info" value="添加"></th>
                     </tr>
            	        </table>
            	  </form>

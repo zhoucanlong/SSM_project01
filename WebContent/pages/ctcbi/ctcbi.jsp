@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="com.zhou.bean.Student" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -37,7 +39,7 @@
             	
               <!-- 课程号搜索 -->
             	<tr>
-			      <form action="#" method="get" class="sidebar-form">
+			      <form action="<%=request.getContextPath()%>/ctcbi/getctcbibynum" method="get" class="sidebar-form">
 			        <div class="input-group">
 			         <td>
 			         	<input type="text" name="q" class="form-control" placeholder="课程号搜索...">
@@ -55,7 +57,7 @@
                
                <!--教师号搜索  -->
                  <tr>
-			      <form action="#" method="get" class="sidebar-form">
+			      <form action="<%=request.getContextPath()%>/ctcbi/getctcbibynum" method="get" class="sidebar-form">
 			        <div class="input-group">
 			         <td>
 			         	<input type="text" name="q" class="form-control" placeholder="教师号搜索...">
@@ -73,7 +75,7 @@
             	
             	<!--班级号搜索 -->
             	<tr>
-			      <form action="#" method="get" class="sidebar-form">
+			      <form action="<%=request.getContextPath()%>/ctcbi/getctcbibynum" method="get" class="sidebar-form">
 			        <div class="input-group">
 			         <td>
 			         	<input type="text" name="q" class="form-control" placeholder="班级号搜索...">
@@ -87,6 +89,13 @@
 			         </td>
 			        </div>
 			      </form>
+            	</tr>
+            	<tr>
+               	<form action="<%=request.getContextPath()%>/ctcbi/getallctcbi" method="post" class="sidebar-form">
+            		<td>
+            			<input type="submit" class="btn btn-block btn-info" value="显示全部课程信息">
+            		</td>
+            	</form>
             	</tr>
             </table>
  
@@ -104,17 +113,18 @@
                 </tr>
                 </thead>
 				<tbody>
-				<tr>
-				  <th>1</th>
-                  <th>00001</th>
-                  <th>800202</th>
-                  <th>170011</th>
-                  
+				<c:forEach items="${ctcbis}" var="ctcbi">
+				 <tr>
+				  <th>${ctcbi.ctcid}</th>
+                  <th>${ctcbi.courseNum}</th>
+                  <th>${ctcbi.teacherNum}</th>
+                  <th>${ctcbi.classNum}</th> 
                   <th>
-                  	<a href="">修改</a>
-                  	<a href="">删除</a>
-                  </th>>
-                </tr>
+                  	<a href="<%=request.getContextPath()%>/ctcbi/dispatchupdate">修改</a>
+                  	<a href="<%=request.getContextPath()%>/ctcbi/deletectcbi?ctcid=${ctcbi.ctcid}">删除</a>
+                  </th>
+               	 </tr>
+				</c:forEach>
 				</tbody>
               </table>
             </div>

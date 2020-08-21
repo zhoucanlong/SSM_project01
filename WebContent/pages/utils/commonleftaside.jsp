@@ -92,7 +92,8 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<%=request.getContextPath()%>/pages/ctcbi/ctcbi.jsp"><i class="fa fa-circle-o"></i>课程-教师-班级查询/删除</a></li>
-            <li><a href="<%=request.getContextPath()%>/pages/ctcbi/addAndUpdate.jsp"><i class="fa fa-circle-o"></i>课程-教师-班级添加/修改</a></li>                
+            <li><a href="<%=request.getContextPath()%>/pages/ctcbi/add.jsp"><i class="fa fa-circle-o"></i>课程-教师-班级添加</a></li>                
+            <li><a href="<%=request.getContextPath()%>/pages/ctcbi/update.jsp"><i class="fa fa-circle-o"></i>课程-教师-班级修改</a></li>                
           </ul>
         </li>
         

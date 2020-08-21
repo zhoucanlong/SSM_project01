@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.zhou.dao.CtcbiDao">
+<!--   		//获取部分ctcbi信息
+	public List<Ctcbi> getCtcbiByNum(Ctcbi ctcbi); -->
+	<select id="getCtcbiByNum" resultType="com.zhou.bean.Ctcbi">
+		select * from ctcbi 
+		<where>
+			<choose>
+				<when test="courseNum!=null">
+					course_num=#{courseNum}
+				</when>
+				<when test="teacherNum!=null">
+					teacher_num=#{teacherNum}
+				</when>
+				<when test="classNum!=null">
+					class_num=#{classNum}
+				</when>
+				<otherwise>
+					1=1
+				</otherwise>
+			</choose>
+		
+		</where>
+	
+	</select>
+<!-- 	//获取全部ctcbi信息
+	public List<Ctcbi> getAllCtcbi(); -->
+	<select id="getAllCtcbi" resultType="com.zhou.bean.Ctcbi">
+		select * from ctcbi
+	</select>
+	
+	
+<!-- 	//增加ctcbi信息
+	public int addCtcbi(Ctcbi ctcbi); -->
+	<insert id="addCtcbi">
+		insert into ctcbi(ctcid,course_num,teacher_num,class_num) 
+		values(#{ctcid},#{courseNum},#{teacherNum},#{classNum})
+	</insert>
+	
+<!-- 	//删除ctcbi信息
+	public int deleteCtcbi(Ctcbi ctcbi); -->
+	<delete id="deleteCtcbi">
+		delete from ctcbi where ctcid=#{ctcid}
+	</delete>
+	
+<!-- 	//修改ctcbi信息
+	public int updateCtcbi(Ctcbi ctcbi); -->
+	  <update id="updateCtcbi">
+	  	update ctcbi 
+	  	set ctcid=#{ctcid},course_num=#{courseNum},teacher_num=#{teacherNum},class_num=#{classNum}
+	  	where ctcid=#{ctcid}
+	  </update>
+  
+  </mapper>
