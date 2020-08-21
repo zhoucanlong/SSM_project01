@@ -34,15 +34,19 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-           	  <form action="<%=request.getContextPath()%>/PersonAddServlet" method="post">
+           	  <form action="<%=request.getContextPath()%>/studentscorecontroller/updatessb" method="post">
            	        <table id="example2" class="table table-bordered table-hover">
            	        <tr>
-	                  <th><input type="text" class="form-control" name="stunum" placeholder="学号:"></th>
-	                  <th><input type="text" class="form-control" name="stuname" placeholder="ctcid:"></th>
+	                  <th><input type="text" class="form-control" name="StuNum" placeholder="学号:" value="${studentScoreBi.stuNum}"></th>
+	                  <th><input type="text" class="form-control" name="ctcid" placeholder="ctcid:" value="${studentScoreBi.ctcid}"></th>
 	                </tr>
 	                <tr>
-	                  <th><input type="text" class="form-control" name="stubirth" placeholder="分数:"></th>
-	                  <th><input type="submit" class="btn btn-block btn-info" value="添加/修改"></th>
+	                  <th><input type="text" class="form-control" name="score" placeholder="分数:" value="${studentScoreBi.score}"></th>
+	                  <th><input type="text" class="form-control" name="term" placeholder="学期:" value="${studentScoreBi.term}"></th>
+	             
+					</tr>
+					<tr>
+					   <th><input type="submit" class="btn btn-block btn-info" value="修改"></th>
 					</tr>
            	        </table>
            	  </form>

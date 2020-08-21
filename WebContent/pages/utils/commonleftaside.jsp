@@ -107,7 +107,8 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<%=request.getContextPath()%>/pages/studentScoreBi/studentscorebi.jsp"><i class="fa fa-circle-o"></i>课程-教师-班级查询/删除</a></li>
-            <li><a href="<%=request.getContextPath()%>/pages/studentScoreBi/addAndUpdate.jsp"><i class="fa fa-circle-o"></i>课程-教师-班级添加/修改</a></li>   
+            <li><a href="<%=request.getContextPath()%>/pages/studentScoreBi/add.jsp"><i class="fa fa-circle-o"></i>课程-教师-班级添加/修改</a></li>   
+            <li><a href="<%=request.getContextPath()%>/pages/studentScoreBi/update.jsp"><i class="fa fa-circle-o"></i>课程-教师-班级添加/修改</a></li>   
           </ul>
         </li>
         

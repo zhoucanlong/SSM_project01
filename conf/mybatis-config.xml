@@ -29,5 +29,6 @@
     <mapper resource="mybatis/mapper/CourseDao.xml"/>
     <mapper resource="mybatis/mapper/TeacherDao.xml"/>
     <mapper resource="mybatis/mapper/CtcbiDao.xml"/>
+    <mapper resource="mybatis/mapper/StudentScoreBiDao.xml"/>
   </mappers>
 </configuration>

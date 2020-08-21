@@ -34,23 +34,21 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-            <table id="example2" class="table table-bordered table-hover">
-           	  <form action="<%=request.getContextPath()%>/student/updatestudent" method="post">
-           	        
+           	  <form action="<%=request.getContextPath()%>/studentscorecontroller/addssb" method="post">
+           	        <table id="example2" class="table table-bordered table-hover">
            	        <tr>
-	                  <th><input type="text" class="form-control" name="stuNum" placeholder="学号:" value="${student.stuNum}"></th>
-	                  <th><input type="text" class="form-control" name="stuName" placeholder="姓名:" value="${student.stuName}"></th>
+	                  <th><input type="text" class="form-control" name="stuNum" placeholder="学号:"></th>
+	                  <th><input type="text" class="form-control" name="ctcid" placeholder="ctcid:"></th>
 	                </tr>
 	                <tr>
-	                  <th><input type="text" class="form-control" name="birth" placeholder="出生日期:（如：2017-03-20）" value="${student.birth}"></th>
-	                  <th><input type="text" class="form-control" name="sex" placeholder="性别:" value="${student.sex}"></th>
-	                </tr>
-	                <tr>
-	                  <th><input type="text" class="form-control" name="classNum" placeholder="班级:" value="${student.classNum}"></th>
-                      <th><input type="submit" class="btn btn-block btn-info" value="修改"></th>
-                    </tr>
+	                  <th><input type="text" class="form-control" name="score" placeholder="分数:"></th>
+	                   <th><input type="text" class="form-control" name="term" placeholder="学期:"></th>
+					</tr>
+					<tr>
+						<th><input type="submit" class="btn btn-block btn-info" value="添加"></th>
+					</tr>
+           	        </table>
            	  </form>
-           	 </table>
             </div>
             <!-- /.box-body -->
           </div>

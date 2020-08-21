@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="com.zhou.bean.Student" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -37,10 +39,10 @@
             	
               <!-- 学号搜索 -->
             	<tr>
-			      <form action="#" method="get" class="sidebar-form">
+			      <form action="<%=request.getContextPath()%>/studentscorecontroller/getssbbynum" method="get" class="sidebar-form">
 			        <div class="input-group">
 			         <td>
-			         	<input type="text" name="q" class="form-control" placeholder="学号搜索...">
+			         	<input type="text" name="stuNum" class="form-control" placeholder="学号搜索...">
 			         </td>
 			         
 			         <td>
@@ -55,10 +57,10 @@
                
                 <!-- ctcid搜索 -->
                	<tr>
-			      <form action="#" method="get" class="sidebar-form">
+			      <form action="<%=request.getContextPath()%>/studentscorecontroller/getssbbynum" method="get" class="sidebar-form">
 			        <div class="input-group">
 			          <td>
-			          	 <input type="text" name="q" class="form-control" placeholder="ctcid搜索...">
+			          	 <input type="text" name="ctcid" class="form-control" placeholder="ctcid搜索...">
 			          </td>
 			          
 			     	  <td>
@@ -70,7 +72,13 @@
 			        </div>
 			      </form>
             	</tr>
-        		 
+        		<tr>
+            	<form action="<%=request.getContextPath()%>/studentscorecontroller/getallssb" method="post" class="sidebar-form">
+            		<td>
+            			<input type="submit" class="btn btn-block btn-info" value="显示全部学生信息">
+            		</td>
+            	</form>
+            	</tr>
             </table>
  
             
@@ -82,23 +90,25 @@
                   <th>学号</th>
                   <th>ctcid</th>
                   <th>分数</th>
-                  <th>学分</th>
                   <th>学期</th>
                   <th>操作</th>>
                 </tr>
                 </thead>
 				<tbody>
+				<c:forEach items="${studentScoreBis}" var="ssb">
 				<tr>
-                  <th>20170310331</th>
-                  <th>1</th>
-                  <th>100</th>
-                  <th>4</th>
-                  <th>2</th>
+                  <th>${ssb.stuNum}</th>
+                  <th>${ssb.ctcid}</th>
+                  <th>${ssb.score}</th>
+                  <th>${ssb.term}</th>
                   <th>
-                  	<a href="">修改</a>
-                  	<a href="">删除</a>
+                  	<a href="<%=request.getContextPath()%>/studentscorecontroller/dispatchupdate?stuNum=${ssb.stuNum}&&ctcid=${ssb.ctcid}">修改</a>
+                  	<a href="<%=request.getContextPath()%>/studentscorecontroller/deletessb?stuNum=${ssb.stuNum}&&ctcid=${ssb.ctcid}">删除</a>
                   </th>>
                 </tr>
+				
+				</c:forEach>
+
 				</tbody>
               </table>
             </div>
