@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespce:名称空间，写接口的全类名，相当于告诉Mybatis这个配置文件是来实现哪个接口的  -->
+<mapper namespace="com.zhou.dao.StudentScoreXuanDao">
+<!-- 		//获取部分信息
+	public List<StudentScoreXuan> getSSXByNum(StudentScoreXuan studentScoreXuan); -->
+	<select id="getSSXByNum" resultType="com.zhou.bean.StudentScoreXuan">
+		select * from studentscorexuan where ctsid=#{ctsid}
+
+	</select>
+<!-- 	//获取全部信息
+	public List<StudentScoreXuan> getAll(); -->
+	<select id="getAll" resultType="com.zhou.bean.StudentScoreXuan">
+		select * from studentscorexuan
+	</select>
+	
+<!-- 	//增加信息
+	public int addSSX(StudentScoreXuan studentScoreXuan); -->
+	<insert id="addSSX">
+		insert into studentscorexuan(ctsid,score,term) 
+		values(#{ctsid},#{score},#{term})
+	</insert>
+	
+<!-- 	//删除信息
+	public int deleteSSX(StudentScoreXuan studentScoreXuan); -->
+	<delete id="deleteSSX">
+		delete from studentscorexuan
+		where ctsid=#{ctsid}
+	</delete>
+<!-- 	//修改信息
+	public int updateSSX(StudentScoreXuan studentScoreXuan); -->
+	<update id="updateSSX">
+		update studentscorexuan
+		set ctsid=#{ctsid},score=#{score},term=#{term}
+		where ctsid=#{ctsid}
+	</update>
+</mapper>

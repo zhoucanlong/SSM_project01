@@ -30,19 +30,23 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">学生信息管理</h3>
+              <h3 class="box-title">课程-教师-学生（选修）</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-           	  <form action="<%=request.getContextPath()%>/PersonAddServlet" method="post">
+           	  <form action="<%=request.getContextPath()%>/ctsxuan/updatectsxuan" method="post">
            	        <table id="example2" class="table table-bordered table-hover">
            	        <tr>
-	                  <th><input type="text" class="form-control" name="stunum" placeholder="学号:"></th>
-	                  <th><input type="text" class="form-control" name="stuname" placeholder="分数:"></th>
+           	       	  <th><input type="text" class="form-control" name="ctsid" placeholder="ctsid:"  value="${ctsxuan.ctsid}"></th>
+	                  <th><input type="text" class="form-control" name="courseNum" placeholder="课程号:"  value="${ctsxuan.courseNum}"></th>
 	                </tr>
 	                <tr>
-	                  <th><input type="submit" class="btn btn-block btn-info" value="添加/修改"></th>
-					</tr>
+	                  <th><input type="text" class="form-control" name="teacherNum" placeholder="教师号:" value="${ctsxuan.teacherNum}"></th>
+	                  <th><input type="text" class="form-control" name="stuNum" placeholder="学生号:" value="${ctsxuan.stuNum}"></th>
+	                </tr>
+	                <tr>
+	                  <th><input type="submit" class="btn btn-block btn-info" value="修改"></th>
+	                </tr>
            	        </table>
            	  </form>
             </div>

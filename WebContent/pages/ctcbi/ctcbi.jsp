@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page import="com.zhou.bean.Student" %>
+<%@page import="com.zhou.bean.Ctcbi" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -39,7 +39,7 @@
             	
               <!-- 课程号搜索 -->
             	<tr>
-			      <form action="<%=request.getContextPath()%>/ctcbi/getctcbibynum" method="get" class="sidebar-form">
+			      <form action="<%=request.getContextPath()%>/ctcbi/getctcbibynum" method="post" class="sidebar-form">
 			        <div class="input-group">
 			         <td>
 			         	<input type="text" name="q" class="form-control" placeholder="课程号搜索...">
@@ -57,7 +57,7 @@
                
                <!--教师号搜索  -->
                  <tr>
-			      <form action="<%=request.getContextPath()%>/ctcbi/getctcbibynum" method="get" class="sidebar-form">
+			      <form action="<%=request.getContextPath()%>/ctcbi/getctcbibynum" method="post" class="sidebar-form">
 			        <div class="input-group">
 			         <td>
 			         	<input type="text" name="q" class="form-control" placeholder="教师号搜索...">
@@ -75,7 +75,7 @@
             	
             	<!--班级号搜索 -->
             	<tr>
-			      <form action="<%=request.getContextPath()%>/ctcbi/getctcbibynum" method="get" class="sidebar-form">
+			      <form action="<%=request.getContextPath()%>/ctcbi/getctcbibynum" method="post" class="sidebar-form">
 			        <div class="input-group">
 			         <td>
 			         	<input type="text" name="q" class="form-control" placeholder="班级号搜索...">

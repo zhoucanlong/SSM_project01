@@ -106,7 +106,6 @@
                   	<a href="<%=request.getContextPath()%>/studentscorecontroller/deletessb?stuNum=${ssb.stuNum}&&ctcid=${ssb.ctcid}">删除</a>
                   </th>>
                 </tr>
-				
 				</c:forEach>
 
 				</tbody>

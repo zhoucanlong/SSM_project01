@@ -30,23 +30,20 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">课程-教师-学生（选修）</h3>
+              <h3 class="box-title">学生信息管理</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-           	  <form action="<%=request.getContextPath()%>/PersonAddServlet" method="post">
+           	  <form action="<%=request.getContextPath()%>/studentscorexuan/addssx" method="post">
            	        <table id="example2" class="table table-bordered table-hover">
            	        <tr>
-	                  <th><input type="text" class="form-control" name="stunum" placeholder="ctsid:"></th>
-	                  <th><input type="text" class="form-control" name="stuname" placeholder="课程号:"></th>
+	                  <th><input type="text" class="form-control" name="ctsid" placeholder="ctsid:"></th>
+	                  <th><input type="text" class="form-control" name="score" placeholder="分数:"></th>
 	                </tr>
 	                <tr>
-	                  <th><input type="text" class="form-control" name="stubirth" placeholder="教师号:"></th>
-	                  <th><input type="text" class="form-control" name="stusex" placeholder="学生号:"></th>
-	                </tr>
-	                <tr>
-                      <th><input type="submit" class="btn btn-block btn-info" value="添加/修改"></th>
-                    </tr>
+	                <th><input type="text" class="form-control" name="term" placeholder="学期:"></th>
+	                  <th><input type="submit" class="btn btn-block btn-info" value="添加"></th>
+					</tr>
            	        </table>
            	  </form>
             </div>

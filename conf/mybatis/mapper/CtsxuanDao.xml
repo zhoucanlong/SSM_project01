@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.zhou.dao.CtsxuanDao">
+ 	
+<!--  		//获取所有的cts信息
+	public List<Ctsxuan> getAllCtsxuan(); -->
+	<select id="getAllCtsxuan" resultType="com.zhou.bean.Ctsxuan">
+		select * from ctsxuan
+	</select>
+	
+<!-- 	//获取部分cts信息
+	public List<Ctsxuan> getCtsxuanByNum(Ctsxuan ctsxuan); -->
+	<select id="getCtsxuanByNum" resultType="com.zhou.bean.Ctsxuan">
+		select * from ctsxuan
+		<where>
+			<choose>
+				<when test="ctsid!=null">
+					ctsid=#{ctsid}
+				</when>
+				<when test="courseNum!=null">
+					course_num=#{courseNum}
+				</when>
+				<when test="teacherNum!=null">
+					teacher_num=#{teacherNum}
+				</when>
+				<when test="stuNum!=null">
+					stu_num=#{stuNum}
+				</when>
+				<otherwise>
+					1=1
+				</otherwise>
+			</choose>
+		</where>
+	</select>
+	
+<!-- 	//增加cts信息
+	public int addCtsxuan(Ctsxuan ctsxuan); -->
+	<insert id="addCtsxuan">
+		insert into ctsxuan(ctsid,course_num,teacher_num,stu_num)
+		values(#{ctsid},#{courseNum},#{teacherNum},#{stuNum})
+	</insert>
+	
+<!-- 	//删除cts信息
+	public int deleteCtsxuan(Ctsxuan ctsxuan); -->
+	<delete id="deleteCtsxuan">
+		delete from ctsxuan
+		where ctsid=#{ctsid}
+	</delete>
+	
+<!-- 	//修改cts信息
+	public int updateCtsxuan(Ctsxuan ctsxuan); -->
+ 	<update id="updateCtsxuan">
+ 		update ctsxuan 	set course_num=#{courseNum},teacher_num=#{teacherNum},stu_num=#{stuNum}
+ 		where ctsid=#{ctsid}
+ 	</update>
+  </mapper>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="com.zhou.bean.StudentScoreXuan" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -35,12 +37,12 @@
             
             <table id="example2" class="table table-bordered table-hover">
             	
-              <!-- 学号搜索 -->
+              <!-- ctsid搜索 -->
             	<tr>
-			      <form action="#" method="get" class="sidebar-form">
+			      <form action="<%=request.getContextPath()%>/studentscorexuan/getssxbynum" method="post" class="sidebar-form">
 			        <div class="input-group">
 			         <td>
-			         	<input type="text" name="q" class="form-control" placeholder="学号搜索...">
+			         	<input type="text" name="ctsid" class="form-control" placeholder="ctsid搜索...">
 			         </td>
 			         
 			         <td>
@@ -53,41 +55,14 @@
 			      </form>
             	</tr>
                
-                <!-- 课程号搜索 -->
-               	<tr>
-			      <form action="#" method="get" class="sidebar-form">
-			        <div class="input-group">
-			          <td>
-			          	 <input type="text" name="q" class="form-control" placeholder="课程号搜索...">
-			          </td>
-			          
-			     	  <td>
-			          	  <span class="input-group-btn">
-			                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-			                </button>
-			              </span>
-			          </td>
-			        </div>
-			      </form>
+              	<tr>
+            	<form action="<%=request.getContextPath()%>/studentscorexuan/getallssx" method="post" class="sidebar-form">
+            		<td>
+            			<input type="submit" class="btn btn-block btn-info" value="显示全部学生信息">
+            		</td>
+            	</form>
             	</tr>
-        		 
-        		<!-- 教师号搜索 -->
-               	<tr>
-			      <form action="#" method="get" class="sidebar-form">
-			        <div class="input-group">
-			          <td>
-			          	 <input type="text" name="q" class="form-control" placeholder="教师号搜索...">
-			          </td>
-			          
-			     	  <td>
-			          	  <span class="input-group-btn">
-			                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-			                </button>
-			              </span>
-			          </td>
-			        </div>
-			      </form>
-            	</tr>
+				
             </table>
  
             
@@ -98,19 +73,23 @@
                 <tr>
                   <th>ctsid</th>
                   <th>分数</th>
-                  <th>学分</th>
+                  <th>学期</th>
+                  <th>操作</th>
                 </tr>
                 </thead>
 				<tbody>
+				<c:forEach items="${studentScoreXuans}" var="ssx">
 				<tr>
-                  <th>2</th>
-                  <th>100</th>
-                  <th>4</th>
+                  <th>${ssx.ctsid}</th>
+                  <th>${ssx.score}</th>
+                  <th>${ssx.term}</th>
                   <th>
-                  	<a href="">修改</a>
-                  	<a href="">删除</a>
+                  	<a href="<%=request.getContextPath()%>/studentscorexuan/dispatchupdate?ctsid=${ssx.ctsid}">修改</a>
+                  	<a href="<%=request.getContextPath()%>/studentscorexuan/deletessx?ctsid=${ssx.ctsid}">删除</a>
                   </th>>
                 </tr>
+				</c:forEach>
+
 				</tbody>
               </table>
             </div>

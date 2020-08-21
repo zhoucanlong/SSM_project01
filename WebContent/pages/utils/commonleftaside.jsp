@@ -122,7 +122,8 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<%=request.getContextPath()%>/pages/ctsxuan/ctsxuan.jsp"><i class="fa fa-circle-o"></i>课程-教师-学生查询/删除</a></li>
-            <li><a href="<%=request.getContextPath()%>/pages/ctsxuan/addAndUpdate.jsp"><i class="fa fa-circle-o"></i>课程-教师-学生添加/修改</a></li>   
+            <li><a href="<%=request.getContextPath()%>/pages/ctsxuan/add.jsp"><i class="fa fa-circle-o"></i>课程-教师-学生添加</a></li>   
+            <li><a href="<%=request.getContextPath()%>/pages/ctsxuan/update.jsp"><i class="fa fa-circle-o"></i>课程-教师-学生修改</a></li>   
           </ul>
         </li>
         
@@ -136,7 +137,8 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<%=request.getContextPath()%>/pages/studentScoreXuan/studentScoreXuan.jsp"><i class="fa fa-circle-o"></i>课程-教师-学生查询/删除</a></li>
-            <li><a href="<%=request.getContextPath()%>/pages/studentScoreXuan/addAndUpdate.jsp"><i class="fa fa-circle-o"></i>课程-教师-学生添加/修改</a></li>   
+            <li><a href="<%=request.getContextPath()%>/pages/studentScoreXuan/add.jsp"><i class="fa fa-circle-o"></i>课程-教师-学生添加</a></li>   
+            <li><a href="<%=request.getContextPath()%>/pages/studentScoreXuan/update.jsp"><i class="fa fa-circle-o"></i>课程-教师-学生修改</a></li>            
           </ul>
         </li>
          
