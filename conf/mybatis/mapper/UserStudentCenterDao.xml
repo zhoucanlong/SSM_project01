@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespce:名称空间，写接口的全类名，相当于告诉Mybatis这个配置文件是来实现哪个接口的  -->
+<mapper namespace="com.zhou.dao.UserStudentCenterDao">
+<!-- 	//查询所有课程信息
+	public List<UserStudentCenter> getAllUSC(); -->
+	
+	<select id="getAllUSC" resultType="com.zhou.bean.UserStudentCenter">
+		SELECT c.course_num,c.course_name,t.teacher_name,t.teacher_num,c.course_credit 
+		FROM course c,teacher t,courseteacher ct
+		WHERE c.course_num=ct.course_num AND t.teacher_num=ct.teacher_num
+	</select>
+		
+<!-- 	//按照条件查找
+	public List<UserStudentCenter> getUSCByNum(UserStudentCenter userStudentCenter); -->
+	<select id="getUSCByNum" resultType="com.zhou.bean.UserStudentCenter">
+		SELECT c.course_num,c.course_name,t.teacher_name,t.teacher_num,c.course_credit 
+		FROM course c,teacher t,courseteacher ct
+		WHERE c.course_num=ct.course_num AND t.teacher_num=ct.teacher_num
+		<trim prefix="AND">
+			<if test="usc.courseName!=null">
+				c.course_name=#{usc.courseName}
+			</if>
+			<if test="usc.teacherName!=null">
+				t.teacher_name=#{usc.teacherName}
+			</if>
+		</trim>
+	</select>
+	
+	<!-- 	//插入ctsxuan表
+	public int addCtsxuan(String ctsid,String courseNum,String teacherNum,String stuNum); -->
+	<insert id="addCtsxuan">
+		INSERT INTO ctsxuan(ctsid,course_num,teacher_num,stu_num) VALUES(#{ctsid},#{courseNum},#{teacherNum},#{stuNum})
+	</insert>
+<!-- 	//插入studentscorexuan表
+	public int addSSX(String ctsid,int score,int term); -->
+	<insert id="addSSX">
+		INSERT INTO studentscorexuan(ctsid,score,term) VALUES(#{ctsid},#{score},#{term})
+	</insert>
+</mapper>

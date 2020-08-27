@@ -32,5 +32,8 @@
     <mapper resource="mybatis/mapper/StudentScoreBiDao.xml"/>
     <mapper resource="mybatis/mapper/CtsxuanDao.xml"/>
     <mapper resource="mybatis/mapper/StudentScoreXuanDao.xml"/>
+    <mapper resource="mybatis/mapper/UserStudentBiDao.xml"/>
+    <mapper resource="mybatis/mapper/UserStudentXuanDao.xml"/>
+    <mapper resource="mybatis/mapper/UserStudentCenterDao.xml"/>
   </mappers>
 </configuration>

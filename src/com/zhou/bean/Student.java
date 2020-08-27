@@ -2,10 +2,13 @@ package com.zhou.bean;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class Student {
 	
+	@NotNull
 	private String stuNum;
 	private String stuName;
 	@DateTimeFormat(pattern="yyyy-MM-dd")

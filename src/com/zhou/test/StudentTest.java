@@ -19,9 +19,7 @@ public class StudentTest {
 	
 	@Test
 	public void test() {
-/*		studentService=ioc.getBean(StudentService.class);
-		Student student=studentService.getStudentByStuNum("20170310331");
-		System.out.println(student);*/
+		
 	}
 	
 	

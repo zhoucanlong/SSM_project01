@@ -57,9 +57,9 @@ public class CommonsAOP {
 		System.out.println("【"+signature.getName()+"】方法返回，用的参数列表【"+Arrays.asList(args)+"】");
 	}
 	
-/*	//环绕通知
+	//环绕通知
 	@Around("MyPoint()")
-	public void myAround(ProceedingJoinPoint joinPoint){
+	public static Object myAround(ProceedingJoinPoint joinPoint){
 		String methodName=joinPoint.getSignature().getName();
 		Object proceed=null;
 		Object[] object=joinPoint.getArgs();
@@ -68,13 +68,13 @@ public class CommonsAOP {
 			//利用反射原理实现方法
             proceed=joinPoint.proceed(object);
 			System.out.println("【环绕返回通知】【"+methodName+"方法，返回值】"+proceed);
-
+			return proceed;
 		} catch (Throwable e) {
 			System.out.println("【环绕异常通知】【"+methodName+"方法，异常信息】"+e);
 		}finally{
 			System.out.println("【环绕后置通知】【"+methodName+"方法开始】");
-
 		}
-	}*/
+		return proceed;
+	}
 	
 }

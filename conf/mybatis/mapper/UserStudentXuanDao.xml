@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespce:名称空间，写接口的全类名，相当于告诉Mybatis这个配置文件是来实现哪个接口的  -->
+<mapper namespace="com.zhou.dao.UserStudentXuanDao">
+<!-- 	//查询所有选修课的信息
+	public List<UserStudentXuan> getAllUSX(@Param("stuNum")String stuNum); -->
+	<select id="getAllUSX" resultType="com.zhou.bean.UserStudentXuan">
+		SELECT c.course_num,c.course_name,t.teacher_name,ssx.score,c.course_credit,ssx.term
+		FROM ctsxuan cx,studentscorexuan ssx,course c,teacher t
+		WHERE cx.ctsid=ssx.ctsid AND cx.course_num=c.course_num  AND cx.teacher_num=t.teacher_num 
+		AND cx.stu_num=#{stuNum}
+	</select>
+	
+<!-- 	//查询部分选修课的信息
+	public List<UserStudentXuan> getUSXByNum(@Param("stuNum")String stuNum,UserStudentXuan userStudentXuan); -->
+	<select id="getUSXByNum" resultType="com.zhou.bean.UserStudentXuan">
+		SELECT c.course_num,c.course_name,t.teacher_name,ssx.score,c.course_credit,ssx.term
+		FROM ctsxuan cx,studentscorexuan ssx,course c,teacher t
+		WHERE cx.ctsid=ssx.ctsid AND cx.course_num=c.course_num  AND cx.teacher_num=t.teacher_num 
+		AND cx.stu_num=#{stuNum}
+		<trim prefix="AND">
+			<if test="usx.courseName!=null">
+				c.course_name=#{usx.courseName}
+			</if>
+			<if test="usx.teacherName!=null">
+				t.teacher_name=#{usx.teacherName}
+			</if>
+			<if test="usx.courseCredit!=0">
+				ssb.term=#{usb.term}
+			</if>
+		</trim>
+	</select>
+
+</mapper>
