@@ -35,7 +35,7 @@
             <!-- /.box-header -->
             <div class="box-body">
             <table id="example2" class="table table-bordered table-hover">
-           	  <form action="<%=request.getContextPath()%>/student/updatestudent" method="post">
+           	  <form action="<%=request.getContextPath()%>/student/updatefinish" method="post">
            	        
            	        <tr>
 	                  <th><input type="text" class="form-control" name="stuNum" placeholder="学号:" value="${student.stuNum}"></th>

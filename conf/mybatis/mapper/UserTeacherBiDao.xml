@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespce:名称空间，写接口的全类名，相当于告诉Mybatis这个配置文件是来实现哪个接口的  -->
+<mapper namespace="com.zhou.dao.UserTeacherBiDao">
+
+<!-- 	//获取所有信息
+	public List<UserTeacherBi> getAllUTB(@Param("teacherNum")String teacherNum); -->
+	<select id="getAllUTB" resultType="com.zhou.bean.UserTeacherBi">
+		SELECT c.course_num,c.course_name,stu.class_num,stu.stu_name,stu.stu_num,ssb.score,c.course_credit,ssb.term
+		FROM course c,ctcbi cb,studentscorebi ssb,student stu,teacher t,class cl
+		WHERE cb.course_num=c.course_num 
+		AND t.teacher_num=cb.teacher_num 
+		AND cl.class_num=cb.class_num 
+		AND ssb.ctcid=cb.ctcid 
+		AND ssb.stu_num=stu.stu_num
+		AND t.teacher_num=#{teacherNum}
+	</select>
+	
+<!-- 	//根据部分条件查询教师所教班级学生的成绩
+	public List<UserTeacherBi> getUTBByNum(@Param("teacherNum")String teacherNum,@Param("utb")UserTeacherBi userTeacherBi); -->
+	<select id="getUTBByNum" resultType="com.zhou.bean.UserTeacherBi">
+		SELECT c.course_num,c.course_name,stu.class_num,stu.stu_name,stu.stu_num,ssb.score,c.course_credit,ssb.term
+		FROM course c,ctcbi cb,studentscorebi ssb,student stu,teacher t,class cl
+		WHERE cb.course_num=c.course_num 
+		AND t.teacher_num=cb.teacher_num 
+		AND cl.class_num=cb.class_num 
+		AND ssb.ctcid=cb.ctcid 
+		AND ssb.stu_num=stu.stu_num
+		AND t.teacher_num=#{teacherNum}
+		<trim prefix="AND">
+			<if test="utb.courseNum!=null">
+				c.course_num=#{utb.courseNum}
+			</if>
+			<if test="utb.stuName!=null">
+				stu.stu_name=#{utb.stuName}
+			</if>
+			<if test="utb.classNum!=null">
+				cl.class_num=#{utb.classNum}
+			</if>
+		</trim>
+	</select>
+	
+<!-- 	//添加学生成绩
+	public int updateStudentScore(@Param("utb")UserTeacherBi userTeacherBi); -->
+	<update id="updateStudentScore">
+		UPDATE studentscorebi,student,ctcbi
+		SET studentscorebi.score=#{utb.score}
+		WHERE studentscorebi.stu_num=#{utb.stuNum} 
+		AND studentscorebi.ctcid=ctcbi.ctcid
+		AND student.stu_num=studentscorebi.stu_num
+	</update>
+</mapper>

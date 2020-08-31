@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.zhou.bean.User;
 import com.zhou.bean.UserStudentCenter;
 import com.zhou.service.UserStudentCenterService;
 
@@ -46,9 +47,11 @@ public class UserStudentCenterController {
 	
 	//将选课信息添加进数据库
 	@RequestMapping("/selectcourse")
-	public String selectCourse(Map<String,Object> map,UserStudentCenter userStudentCenter){
-		System.out.println(userStudentCenter);
-		Integer result=userStudentCenterService.addCourse(userStudentCenter, "20170310331");
+	public String selectCourse(Map<String,Object> map,UserStudentCenter userStudentCenter,HttpSession session){
+		//获取存储在session中的用户信息
+		User user=(User) session.getAttribute("user");
+		String stuNum=user.getUsernum();
+		Integer result=userStudentCenterService.addCourse(userStudentCenter, stuNum);
 		List<UserStudentCenter> userStudentCenters=userStudentCenterService.getAllUSC();
 		map.put("uscs", userStudentCenters);
 		return "userStudent/selectcenter";

@@ -50,7 +50,7 @@ public class StudentController {
 	}
 	
 	//转到修改页面显示
-	@RequestMapping("/updateStudent")
+	@RequestMapping("/updatestudent")
 	public String updateStudent(@RequestParam("stuNum")String stuNum,Map<String,Object> map){
 		Student s=new Student();
 		s.setStuNum(stuNum);
@@ -64,7 +64,7 @@ public class StudentController {
 	}
 	
 	//修改学生信息
-	@RequestMapping("/updateFinish")
+	@RequestMapping("/updatefinish")
 	public String updateFinish(Student student,Map<String,Object> map){
 		System.out.println(student);
 		int result=studentService.updateStudent(student);

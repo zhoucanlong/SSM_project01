@@ -36,26 +36,25 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">登录</p>
-
-    <form action="<%=request.getContextPath()%>/user/login" method="post">
+    <p class="login-box-msg">注册</p>
+	${msg}
+    <form action="<%=request.getContextPath()%>/user/regist" method="post">
       <div class="form-group has-feedback">
         <input type="text" name="username" class="form-control" placeholder="账号">
       </div>
       <div class="form-group has-feedback">
         <input type="password" name="password" class="form-control" placeholder="密码">
       </div>
+      <div class="form-group has-feedback">
+        <input type="text" name="level" class="form-control" placeholder="用户对象（学生填1，教师填2）">
+      </div>
+      <div class="form-group has-feedback">
+        <input type="text" name="usernum" class="form-control" placeholder="学号/教师号">
+      </div>
       <div class="row">
-        <div class="col-xs-8">
-          <div class="checkbox icheck">
-            <label>
-              <input type="checkbox"> 记住我
-            </label>
-          </div>
-        </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">登录</button>
+          <button type="submit" class="btn btn-primary btn-block btn-flat">注册</button>
         </div>
         <!-- /.col -->
       </div>
@@ -63,8 +62,6 @@
 
     <!-- /.social-auth-links -->
 
-    <a href="#">忘记密码</a><br>
-    <a href="<%=request.getContextPath()%>/pages/user/regist.jsp" class="text-center">注册新账号</a>
 
   </div>
   <!-- /.login-box-body -->

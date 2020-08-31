@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespce:名称空间，写接口的全类名，相当于告诉Mybatis这个配置文件是来实现哪个接口的  -->
+<mapper namespace="com.zhou.dao.UserTeacherXuanDao">
+
+<!-- 	//获取全部学生信息
+	public List<UserTeacherBi> getAllUTX(String teacherNum); -->
+	<select id="getAllUTX" resultType="com.zhou.bean.UserTeacherBi">
+		SELECT c.course_num,c.course_name,cl.class_num,s.stu_name,s.stu_num,ssx.score,c.course_credit,ssx.term
+		FROM course c,class cl,student s,studentscorexuan ssx,ctsxuan cts
+		WHERE teacher_num=#{teacherNum} 
+		AND cts.ctsid=ssx.ctsid
+		AND c.course_num=cts.course_num
+		AND s.stu_num=cts.stu_num
+		AND cl.class_num=s.class_num
+	</select>
+	
+<!-- 	//获取部分学生信息
+	public List<UserTeacherBi> getUTXByNum(@Param("utb")UserTeacherBi userTeacherBi,@Param("teacherNum")String teacherNum); -->
+	<select id="getUTXByNum" resultType="com.zhou.bean.UserTeacherBi">
+		SELECT c.course_num,c.course_name,cl.class_num,s.stu_name,s.stu_num,ssx.score,c.course_credit,ssx.term
+		FROM course c,class cl,student s,studentscorexuan ssx,ctsxuan cts
+		WHERE teacher_num=#{teacherNum} 
+		AND cts.ctsid=ssx.ctsid
+		AND c.course_num=cts.course_num
+		AND s.stu_num=cts.stu_num
+		AND cl.class_num=s.class_num
+				<trim prefix="AND">
+			<if test="utb.courseNum!=null">
+				c.course_num=#{utb.courseNum}
+			</if>
+			<if test="utb.stuName!=null">
+				cts.stu_num=#{utb.stuNum}
+			</if>
+			<if test="utb.classNum!=null">
+				cl.class_num=#{utb.classNum}
+			</if>
+		</trim>
+	
+	</select>
+<!-- 	//更新学生成绩
+	public int updateScore(@Param("utb")UserTeacherBi userTeacherBi,@Param("teacherNum")String teacherNum); -->
+	<update id="updateScore">
+		UPDATE studentscorexuan,ctsxuan
+		SET studentscorexuan.score=#{utb.score}
+		WHERE ctsxuan.ctsid=studentscorexuan.ctsid
+		AND ctsxuan.stu_num=#{utb.stuNum}
+		AND ctsxuan.teacher_num=#{teacherNum}
+	</update>
+</mapper>

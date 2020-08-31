@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespce:名称空间，写接口的全类名，相当于告诉Mybatis这个配置文件是来实现哪个接口的  -->
+<mapper namespace="com.zhou.dao.UserDao">
+	
+	<!-- //注册账号
+	public int regist(@Param("user")User user); -->
+	<insert id="regist">
+		INSERT INTO USER(username,PASSWORD,LEVEL,usernum) 
+		VALUES(#{user.username},#{user.password},#{user.level},#{user.usernum})
+	</insert>
+	
+	<!-- 	//查询某账号
+	public int exit(String username); -->
+	<select id="exit" resultType="com.zhou.bean.User">
+		select * from user where username=#{username}
+	</select>
+	
+	<!-- 	//登录账号
+	public User login(String username,String password); -->
+	<select id="login" resultType="com.zhou.bean.User">
+		select * from user where username=#{username} and password=#{password}
+	</select>
+</mapper>

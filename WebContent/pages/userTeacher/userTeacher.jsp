@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page import="com.zhou.bean.Student" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -15,7 +14,7 @@
 <div class="wrapper">
 
  <jsp:include page="/pages/utils/commonhead.jsp"/>
- <jsp:include page="/pages/utils/commonleftaside.jsp"/>       
+ <jsp:include page="/pages/utils/teachercommonleftaside.jsp"/>       
    <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -33,17 +32,16 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">学生信息管理</h3>
+              <h3 class="box-title">必修课信息</h3>
             </div>
             
             <table id="example2" class="table table-bordered table-hover">
             	
-              <!-- 学号搜索 -->
             	<tr>
-			      <form action="<%=request.getContextPath()%>/student/getstudent" method="post" class="sidebar-form">
+			      <form action="<%=request.getContextPath()%>/utb/getutbbynum" method="post" class="sidebar-form">
 			        <div class="input-group">
 			         <td>
-			         	<input type="text" name="stuNum" class="form-control" placeholder="学号搜索...">
+			         	<input type="text" name="courseNum" class="form-control" placeholder="课程号搜索...">
 			         </td>
 			         
 			         <td>
@@ -56,14 +54,13 @@
 			      </form>
             	</tr>
                
-                <!-- 班级搜索 -->
+                <!-- 学生名搜索 -->
                	<tr>
-			      <form action="<%=request.getContextPath()%>/student/getstudent" method="post" class="sidebar-form">
+			      <form action="<%=request.getContextPath()%>/utb/getutbbynum" method="post" class="sidebar-form">
 			        <div class="input-group">
 			          <td>
-			          	 <input type="text" name="classNum" class="form-control" placeholder="班级搜索...">
+			          	 <input type="text" name="stuName" class="form-control" placeholder="学生名搜索...">
 			          </td>
-			          
 			     	  <td>
 			          	  <span class="input-group-btn">
 			                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
@@ -74,14 +71,13 @@
 			      </form>
             	</tr>
         		
-        		<!--姓名搜索  -->
+        		<!--班级号搜索  -->
                	<tr>
-		            <form action="<%=request.getContextPath()%>/student/getstudent" method="post" class="sidebar-form">
+		            <form action="<%=request.getContextPath()%>/utb/getutbbynum" method="post" class="sidebar-form">
 				        <div class="input-group">
 				          <td>
-				          	  <input type="text" name="stuName" class="form-control" placeholder="姓名搜索...">
+				          	  <input type="text" name="classNum" class="form-control" placeholder="班级号搜索...">
 				          </td>
-				  
 				  		 <td>
 				  		 	<span class="input-group-btn">
 				                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
@@ -91,45 +87,51 @@
 				        </div>
 				     </form>
             	</tr>    
-            	
-            	<tr>
-            	<form action="<%=request.getContextPath()%>/student/getallstudent" method="post" class="sidebar-form">
+            	<tr>     
+            	  <form action="<%=request.getContextPath()%>/utx/getallutb" method="post" class="sidebar-form">
             		<td>
-            			<input type="submit" class="btn btn-block btn-info" value="显示全部学生信息">
+            			<input type="submit" class="btn btn-block btn-info" value="显示全部必修信息">
             		</td>
             	</form>
             	</tr>
             </table>
- 
-            
             <!-- /.box-header -->
             <div class="box-body">
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <th>学号</th>
-                  <th>姓名</th>
-                  <th>出生日期</th>
-                  <th>性别</th>
+                  <th>课程号</th>
+                  <th>课程名</th>
                   <th>班级号</th>
-                  <th>操作</th>>
+                  <th>学生名</th>
+                  <th>学生号</th>
+                  <th>成绩</th>
+                  <th>操作</th>
+                  <th>学分</th>
+                  <th>学期</th>
                 </tr>
                 </thead>
 				<tbody>
-				<c:forEach items="${students}" var="student">
-					 <tr>
-					  <td>${student.stuNum}</td>
-	                  <td>${student.stuName}</td>
-	                  <td><fmt:formatDate value="${student.birth}" type="date"/></td>
-	                  <td>${student.sex}</td>
-	                  <td>${student.classNum}</td>
-	                  <td>
-	                 	<a href="<%=request.getContextPath()%>/student/updatestudent?stuNum=${student.stuNum}">修改</a>
-	                  	<a href="<%=request.getContextPath()%>/student/deleteStudent?stuNum=${student.stuNum}">删除</a>
-	                  </td>
-					
+				<c:forEach items="${utbs}" var="utb">
 					<tr>
-
+	                  <th>${utb.courseNum}</th>
+	                  <th>${utb.courseName}</th>
+	                  <th>${utb.classNum}</th>
+	                  <th>${utb.stuName}</th>
+	                  <th>${utb.stuNum}</th>
+	                  <form action="<%=request.getContextPath()%>/utb/updatescore" method="post">
+	                  	 <input type="hidden" name="courseNum" value="${utb.courseNum}"/>
+	            		 <input type="hidden" name="courseName" value="${utb.courseName}"/>
+	            		 <input type="hidden" name="classNum" value="${utb.classNum}"/>
+	            		 <input type="hidden" name="stuName" value="${utb.stuName}"/>
+	            		 <input type="hidden" name="stuNum" value="${utb.stuNum}"/>
+	            		 <input type="hidden" name="courseCredit" value="${utb.courseCredit}"/>
+	            		 <input type="hidden" name="term" value="${utb.term}"/>
+	              		 <th><input type="text" name="score" class="form-control" value="${utb.score}"></th>
+	                  	 <th><input type="submit" class="btn btn-block btn-info" value="修改"></th>
+	                  </form>
+	                  <th>${utb.courseCredit}</th>
+	                  <th>${utb.term}</th><th>
 	                </tr>
 				</c:forEach>
 
